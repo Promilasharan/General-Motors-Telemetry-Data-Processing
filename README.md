@@ -21,16 +21,7 @@ You'll also need to set up the following resources:
 - Landing: Create a container named landing to store the telemetry data copied from the AWS S3 storage bucket using Azure Data Factory.
 - Staging: Create a container named staging to store the validated telemetry data that is ready to be copied to the Azure SQL Database.
 - Rejected: Create a container named rejected to store the telemetry data that is rejected by the validation process.
-- Azure SQL Database: Create an Azure SQL Database and set up the following table to store the validated telemetry data: sql  Copy codeCREATE TABLE TelemetryData (
-    VehicleId INT NOT NULL,
-    Timestamp DATETIME NOT NULL,
-    Latitude FLOAT NOT NULL,
-    Longitude FLOAT NOT NULL,
-    Speed FLOAT NOT NULL,
-    EngineRpm FLOAT NOT NULL,
-    Acceleration FLOAT NOT NULL,
-    PRIMARY KEY (VehicleId, Timestamp)
-);
+- Azure SQL Database: Create an Azure SQL Database and set up the following table to store the validated telemetry data:
 - Azure Function: Create an Azure Function and set up the following:
 - Runtime stack: Choose .NET Core 3.1.
 - Trigger: Choose Azure Blob Storage trigger.
