@@ -8,6 +8,8 @@ The data processing pipeline consists of the following components:
 - **Staging:** Azure Storage Account where the validated telemetry data is copied using Azure Data Factory.
 - **Destination:** Azure SQL Database where the validated telemetry data is stored.
 Here's a **diagram of the pipeline architecture:**
+![image](https://user-images.githubusercontent.com/122796244/221552437-aa31c941-0fea-43e6-af83-ab7de9a62f2f.png)
+
 
 ## Setup
 To deploy this data processing pipeline, you'll need an Azure subscription and the following Azure services:
