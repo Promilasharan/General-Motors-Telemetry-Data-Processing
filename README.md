@@ -7,7 +7,7 @@ The data processing pipeline consists of the following components:
 - **Validation:** Azure Function triggered by a storage-based trigger that reads the telemetry data from the landing folder, validates it, and moves it to the staging folder if it's valid or to the rejected folder otherwise.
 - **Staging:** Azure Storage Account where the validated telemetry data is copied using Azure Data Factory.
 - **Destination:** Azure SQL Database where the validated telemetry data is stored.
-Here's a **diagram of the pipeline architecture:**
+- Here's a **diagram of the pipeline architecture:**
 ![image](https://user-images.githubusercontent.com/122796244/221552437-aa31c941-0fea-43e6-af83-ab7de9a62f2f.png)
 
 
@@ -17,13 +17,23 @@ To deploy this data processing pipeline, you'll need an Azure subscription and t
 - Azure Storage Account
 - Azure Function
 - Azure SQL Database
-You'll also need to set up the following resources:
+- You'll also need to set up the following resources:
 - AWS S3 storage bucket: Create an AWS S3 storage bucket and configure it to receive telemetry data from the third-party IoT devices installed in General Motors' heavy vehicles.
 ## Azure Storage Account: Create an Azure Storage Account and set up the following containers:
 - Landing: Create a container named landing to store the telemetry data copied from the AWS S3 storage bucket using Azure Data Factory.
 - Staging: Create a container named staging to store the validated telemetry data that is ready to be copied to the Azure SQL Database.
 - Rejected: Create a container named rejected to store the telemetry data that is rejected by the validation process.
-## Azure SQL Database: Create an Azure SQL Database and set up the table to store the validated telemetry data
+## Azure SQL Database: 
+- Create an Azure SQL Database and set up the table to store the validated telemetry data
+- use following code:
+- CREATE TABLE [VehicleData](
+	[VehicleID] [nvarchar](100)  NOT NULL,
+	[latitiude] [DECIMAL](19,12) NULL,
+	[longitude] [DECIMAL](19,12) NULL,
+	[City] [nvarchar](100) NULL,
+	[temeprature] [int] NULL,
+	[speed] [int] NULL
+)
 ## Azure Function: Create an Azure Function and set up the following:
   - Runtime stack: Choose .NET Core 3.1.
   - Trigger: Choose Azure Blob Storage trigger.
